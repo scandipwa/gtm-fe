@@ -11,6 +11,7 @@
  */
 
 import { roundPrice } from 'Util/Price';
+
 import GoogleTagManager, { EVENT_GENERAL } from '../GoogleTagManager.component';
 
 export const PRODUCT_COLOR = 'variant';
@@ -24,7 +25,7 @@ export const NOT_APPLICABLE = 'N/A';
 /**
  * Product helper, contain all related to product data prepare methods
  */
-export default class Product {
+export class Product {
     static DEFAULT_BRAND = 'ScandiPWA';
 
     /**
@@ -189,10 +190,14 @@ export default class Product {
     }
 
     static mergeGroupedProducts(groupedProducts1, groupedProducts2) {
-        if (!groupedProducts1) return groupedProducts2;
-        if (!groupedProducts2) return groupedProducts1;
+        if (!groupedProducts1) {
+            return groupedProducts2;
+        }
+        if (!groupedProducts2) {
+            return groupedProducts1;
+        }
 
-        const result = Object.assign({}, groupedProducts2);
+        const result = { ...groupedProducts2 };
 
         Object.keys(groupedProducts1).forEach((key) => {
             if (groupedProducts2[key]) {
@@ -268,3 +273,5 @@ export default class Product {
         };
     }
 }
+
+export default Product;

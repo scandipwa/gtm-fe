@@ -25,7 +25,7 @@ export const aroundComponentDidMount = (args, callback, instance) => {
     return callback(...args);
 };
 
-export const aroundSelectPaymentMethod = (args, callback, instance) => {
+export const aroundSelectPaymentMethod = (args, callback) => {
     const [{ code }] = args;
     Event.dispatch(
         EVENT_GTM_CHECKOUT_OPTION,

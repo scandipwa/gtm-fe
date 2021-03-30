@@ -9,10 +9,10 @@
  * @link https://github.com/scandipwa/base-theme
  */
 
-import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
 
-class GoogleTagManagerRouteWrapper extends PureComponent {
+export class GoogleTagManagerRouteWrapper extends PureComponent {
     static propTypes = {
         route: PropTypes.string,
         children: PropTypes.node.isRequired

@@ -31,7 +31,7 @@ export class PurchasePlugin {
         return callback(...args);
     };
 
-    fetchMutation = (args, callback, instance) => {
+    fetchMutation = (args, callback) => {
         const {
             rawMutation: name = ''
         } = args;

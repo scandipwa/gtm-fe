@@ -27,7 +27,7 @@ export class QuantityChangePlugin {
         callback(...args);
     };
 
-    changeItemQty = (args, callback, instance) => {
+    changeItemQty = (args, callback) => {
         const { newQuantity, item, oldQuantity } = this.handleChangeState;
 
         return callback(...args)

@@ -12,7 +12,7 @@
 /**
  * GTM scripts
  */
-class Scripts {
+export class Scripts {
     static getScript({
         id, dataLayerName
     }) {

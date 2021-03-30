@@ -10,56 +10,48 @@
  * @link https://github.com/scandipwa/base-theme
  */
 
-import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
 
-import General from './events/General.event';
-import Scripts from './Scripts';
-import Impression from './events/Impression.event';
-import ProductClickEvent from './events/ProductClick.event';
-import AddToCartEvent from './events/AddToCart.event';
-import RemoveFromCartEvent from './events/RemoveFromCart.event';
-import ProductDetailEvent from './events/ProductDetail.event';
-import PurchaseEvent from './events/Purchase.event';
-import CheckoutEvent from './events/Checkout.event';
-import CheckoutOptionEvent from './events/CheckoutOption.event';
-import UserLoginEvent from './events/UserLogin.event';
-import UserRegisterEvent from './events/UserRegister.event';
-import { ONE_MONTH_IN_SECONDS } from 'Util/Request/QueryDispatcher';
 import { CUSTOMER } from 'Store/MyAccount/MyAccount.dispatcher';
 import BrowserDatabase from 'Util/BrowserDatabase';
+import { ONE_MONTH_IN_SECONDS } from 'Util/Request/QueryDispatcher';
 
-/**
- * Event list
- */
-export const EVENT_GENERAL = 'general';
-export const EVENT_IMPRESSION = 'productImpression';
-export const EVENT_PRODUCT_CLICK = 'productClick';
-export const EVENT_ADD_TO_CART = 'addToCart';
-export const EVENT_REMOVE_FROM_CART = 'removeFromCart';
-export const EVENT_PRODUCT_DETAIL = 'productDetail';
-export const EVENT_PURCHASE = 'purchase';
-export const EVENT_CHECKOUT = 'checkout';
-export const EVENT_CHECKOUT_OPTION = 'checkoutOption';
-export const EVENT_USER_REGISTER = 'userRegister';
-export const EVENT_USER_LOGIN = 'userLogin';
-export const EVENT_NOT_FOUND = 'notFound';
-export const EVENT_CATEGORY_FILTERS = 'categoryFilters';
-export const EVENT_ADDITIONAL = 'additional';
-
-/**
- * Const
- */
-export const DATA_LAYER_NAME = 'dataLayer';
-export const GROUPED_PRODUCTS_PREFIX = 'GROUPED_PRODUCTS_';
-export const GROUPED_PRODUCTS_GUEST = `${ GROUPED_PRODUCTS_PREFIX }GUEST`;
-export const GTM_INJECTION_TIMEOUT = 4000;
+import AddToCartEvent from './events/AddToCart.event';
+import CheckoutEvent from './events/Checkout.event';
+import CheckoutOptionEvent from './events/CheckoutOption.event';
+import General from './events/General.event';
+import Impression from './events/Impression.event';
+import ProductClickEvent from './events/ProductClick.event';
+import ProductDetailEvent from './events/ProductDetail.event';
+import PurchaseEvent from './events/Purchase.event';
+import RemoveFromCartEvent from './events/RemoveFromCart.event';
+import UserLoginEvent from './events/UserLogin.event';
+import UserRegisterEvent from './events/UserRegister.event';
+import {
+    DATA_LAYER_NAME,
+    EVENT_ADD_TO_CART,
+    EVENT_CHECKOUT,
+    EVENT_CHECKOUT_OPTION,
+    EVENT_GENERAL,
+    EVENT_IMPRESSION,
+    EVENT_PRODUCT_CLICK,
+    EVENT_PRODUCT_DETAIL,
+    EVENT_PURCHASE,
+    EVENT_REMOVE_FROM_CART,
+    EVENT_USER_LOGIN,
+    EVENT_USER_REGISTER,
+    GROUPED_PRODUCTS_GUEST,
+    GROUPED_PRODUCTS_PREFIX,
+    GTM_INJECTION_TIMEOUT
+} from './GoogleTagManager.config';
+import Scripts from './Scripts';
 
 /**
  * Google tag manager wrapper
  * This should have 1 instance to avoid multiple initializations
  */
-class GoogleTagManager extends PureComponent {
+export class GoogleTagManager extends PureComponent {
     static propTypes = {
         gtm: PropTypes.shape(),
         // eslint-disable-next-line react/no-unused-prop-types
@@ -349,7 +341,7 @@ class GoogleTagManager extends PureComponent {
      */
     addDataLayer(data) {
         if (this.enabled) {
-            this.currentDataLayer = Object.assign({}, this.currentDataLayer, data);
+            this.currentDataLayer = { ...this.currentDataLayer, ...data };
         }
     }
 

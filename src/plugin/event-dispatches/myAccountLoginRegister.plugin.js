@@ -13,14 +13,14 @@ import Event, {
     EVENT_GTM_USER_REGISTER
 } from '../../util/Event';
 
-export const createAccount = (args, callback, instance) => callback(...args)
+export const createAccount = (args, callback) => callback(...args)
     .then((signInPromise) => {
         Event.dispatch(EVENT_GTM_USER_REGISTER);
 
         return signInPromise;
     });
 
-export const signIn = (args, callback, instance) => callback(...args)
+export const signIn = (args, callback) => callback(...args)
     .then((result) => {
         Event.dispatch(EVENT_GTM_USER_LOGIN);
 

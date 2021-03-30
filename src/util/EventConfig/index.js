@@ -11,7 +11,7 @@
 
 import BrowserDatabase from 'Util/BrowserDatabase';
 
-import { EVENT_IMPRESSION } from '../../component/GoogleTagManager/GoogleTagManager.component';
+import { EVENT_GTM_IMPRESSIONS } from '../Event/Events';
 
 /**
  * Check if push event is enabled in config
@@ -33,11 +33,4 @@ export const isEventEnabled = (eventName) => {
  * @param name
  * @returns {string}
  */
-export const mapGtmEventNames = (name) => {
-    switch (name) {
-    case name.includes('impressions'):
-        return EVENT_IMPRESSION;
-    default:
-        return name;
-    }
-};
+export const mapGtmEventNames = (name) => (name.includes('impressions') ? EVENT_GTM_IMPRESSIONS : name);

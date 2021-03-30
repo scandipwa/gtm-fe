@@ -14,12 +14,12 @@ import { withRouter } from 'react-router';
 
 import GoogleTagManager from './GoogleTagManager.component';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
     gtm: state.ConfigReducer.gtm,
     state
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch) => ({
     dispatch
 });
 

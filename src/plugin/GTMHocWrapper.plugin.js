@@ -1,22 +1,32 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
 import {
-    PDP,
     CART,
-    MENU,
-    SEARCH,
     CATEGORY,
     CHECKOUT,
     CMS_PAGE,
+    CUSTOMER_ACCOUNT,
     HOME_PAGE,
-    CUSTOMER_ACCOUNT
+    MENU,
+    PDP,
+    SEARCH
 } from 'Component/Header/Header.config';
+
+import withGTM from '../component/GoogleTagManager/withGTM.hoc';
 
 export const URL_REWRITE = 'url-rewrite';
 export const PASSWORD_CHANGE = 'password-change';
 export const CONFIRM_ACCOUNT = 'confirm_account';
 
-import withGTM from '../component/GoogleTagManager/withGTM.hoc';
-
-const wrapperFunction = (route) => (args, callback) => withGTM(callback(...args), route);
+export const wrapperFunction = (route) => (args, callback) => withGTM(callback(...args), route);
 
 export default {
     'Route/HomePage/Container': { 'member-function': { render: wrapperFunction(HOME_PAGE) } },

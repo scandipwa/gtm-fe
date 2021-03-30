@@ -11,7 +11,7 @@
 
 import GoogleTagManagerRouteWrapperComponent from './GoggleTagManagerRouteWrapper.component';
 
-const withGTM = (originalRender, gtmRoute) => (
+export const withGTM = (originalRender, gtmRoute) => (
     <GoogleTagManagerRouteWrapperComponent route={ gtmRoute }>
         { originalRender }
     </GoogleTagManagerRouteWrapperComponent>

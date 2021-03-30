@@ -25,7 +25,7 @@ export class RemoveItemPlugin {
         };
     };
 
-    removeProductFromCart = (args, callback, instance) => {
+    removeProductFromCart = (args, callback) => {
         const { item, quantity } = this.handleRemoveState;
 
         return callback(...args)
