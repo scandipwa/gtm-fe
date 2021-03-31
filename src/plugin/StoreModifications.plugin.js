@@ -15,7 +15,7 @@ import GoogleTagManager, { GROUPED_PRODUCTS_GUEST } from '../component/GoogleTag
 import ProductHelper from '../component/GoogleTagManager/utils/Product';
 import GtmQuery from '../query/Gtm.query';
 
-export const handle_syncCartWithBEError = (args, callback, instance) => callback(...args)
+export const handle_syncCartWithBEError = (args, callback) => callback(...args)
     .then(
         (result) => {
             GoogleTagManager.getInstance().setGroupedProducts({});
@@ -23,7 +23,7 @@ export const handle_syncCartWithBEError = (args, callback, instance) => callback
         }
     );
 
-export const addGtmConfigQuery = (args, callback, instance) => {
+export const addGtmConfigQuery = (args, callback) => {
     const original = callback(...args);
     return [
         ...(Array.isArray(original) ? original : [original]),
@@ -31,7 +31,7 @@ export const addGtmConfigQuery = (args, callback, instance) => {
     ];
 };
 
-export const addGtmToConfigReducerInitialState = (args, callback, instance) => {
+export const addGtmToConfigReducerInitialState = (args, callback) => {
     const { gtm } = BrowserDatabase.getItem('config') || { gtm: {} };
 
     return {
@@ -60,7 +60,7 @@ export const addGtmToConfigUpdate = (args, callback, context) => {
     };
 };
 
-export const afterRequestCustomerData = (args, callback, instance) => {
+export const afterRequestCustomerData = (args, callback) => {
     const gtm = GoogleTagManager.getInstance();
 
     /** transfer grouped products data from guest to logged in user */

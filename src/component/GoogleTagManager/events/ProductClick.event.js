@@ -11,7 +11,7 @@
  */
 
 import Event, { EVENT_GTM_PRODUCT_CLICK } from '../../../util/Event';
-import { EVENT_IMPRESSION } from '../GoogleTagManager.component';
+import { EVENT_IMPRESSION } from '../GoogleTagManager.config';
 import ProductHelper from '../utils';
 import BaseEvent from './BaseEvent.event';
 

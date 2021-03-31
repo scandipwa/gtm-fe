@@ -11,17 +11,21 @@
 import { BEFORE_ITEMS_TYPE } from 'Component/Router/Router.config';
 
 import GoogleTagManager from '../component/GoogleTagManager';
+import {
+    MAX_NUMBER_FILTERS,
+    MAX_NUMBER_POSITION
+} from './AdditionalRoutes.config';
 
-export const addGtmComponent = (member, context) => {
+export const addGtmComponent = (member) => {
     const maxPosition = Math.max(
-        member.map((route) => route.position).filter((num) => num <= 1000)
+        member.map((route) => route.position).filter((num) => num <= MAX_NUMBER_FILTERS)
     );
 
     return [
         ...member,
         {
             component: <GoogleTagManager />,
-            position: maxPosition + 10
+            position: maxPosition + MAX_NUMBER_POSITION
         }
     ];
 };
