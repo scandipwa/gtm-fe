@@ -13,7 +13,7 @@
 import { roundPrice } from 'Util/Price';
 
 import { EVENT_GENERAL } from '../GoogleTagManager.config';
-import GoogleTagManager from '../GoogleTagManager.container';
+import GoogleTagManagerContainer from '../GoogleTagManager.container';
 
 export const PRODUCT_COLOR = 'variant';
 export const GROUPED_PRODUCT_PRICE = 'metric1';
@@ -37,7 +37,7 @@ export class Product {
      */
     // eslint-disable-next-line no-unused-vars
     static getList() {
-        const meta = GoogleTagManager.getEvent(EVENT_GENERAL).currentMeta.metaObject || {};
+        const meta = GoogleTagManagerContainer.getEvent(EVENT_GENERAL).currentMeta.metaObject || {};
 
         return meta.name
             || meta.title
@@ -140,7 +140,7 @@ export class Product {
      * @param groupedProductPrice
      */
     static addGroupedProduct(groupedProductData, product, groupedProductPrice) {
-        const GTMInstance = GoogleTagManager.getInstance();
+        const GTMInstance = GoogleTagManagerContainer.getInstance();
         const groupedProducts = GTMInstance.getGroupedProducts();
         const { sku, items } = product;
         const existingGroupedProduct = groupedProducts[sku];
@@ -163,7 +163,7 @@ export class Product {
     }
 
     static updateGroupedProduct(childSku, price) {
-        const GTMInstance = GoogleTagManager.getInstance();
+        const GTMInstance = GoogleTagManagerContainer.getInstance();
         const groupedProducts = GTMInstance.getGroupedProducts();
         const skuOfProductToUpdate = Object.keys(groupedProducts).find((sku) => {
             const { items } = groupedProducts[sku];

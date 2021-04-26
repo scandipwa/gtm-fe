@@ -12,14 +12,14 @@ import { UPDATE_CONFIG } from 'Store/Config/Config.action';
 import BrowserDatabase from 'Util/BrowserDatabase';
 
 import { GROUPED_PRODUCTS_GUEST } from '../component/GoogleTagManager/GoogleTagManager.config';
-import GoogleTagManager from '../component/GoogleTagManager/GoogleTagManager.container';
+import GoogleTagManagerContainer from '../component/GoogleTagManager/GoogleTagManager.container';
 import ProductHelper from '../component/GoogleTagManager/utils/Product';
 import GtmQuery from '../query/Gtm.query';
 
 export const handle_syncCartWithBEError = (args, callback) => callback(...args)
     .then(
         (result) => {
-            GoogleTagManager.getInstance().setGroupedProducts({});
+            GoogleTagManagerContainer.getInstance().setGroupedProducts({});
             return result;
         }
     );
@@ -62,7 +62,7 @@ export const addGtmToConfigUpdate = (args, callback, context) => {
 };
 
 export const afterRequestCustomerData = (args, callback) => {
-    const gtm = GoogleTagManager.getInstance();
+    const gtm = GoogleTagManagerContainer.getInstance();
 
     /** transfer grouped products data from guest to logged in user */
     const transferGroupedProductsData = (id) => {
