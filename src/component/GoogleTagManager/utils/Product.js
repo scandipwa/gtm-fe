@@ -12,8 +12,8 @@
 
 import { roundPrice } from 'Util/Price';
 
-import GoogleTagManager from '../GoogleTagManager.component';
 import { EVENT_GENERAL } from '../GoogleTagManager.config';
+import GoogleTagManager from '../GoogleTagManager.container';
 
 export const PRODUCT_COLOR = 'variant';
 export const GROUPED_PRODUCT_PRICE = 'metric1';

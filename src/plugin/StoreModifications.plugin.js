@@ -11,7 +11,8 @@
 import { UPDATE_CONFIG } from 'Store/Config/Config.action';
 import BrowserDatabase from 'Util/BrowserDatabase';
 
-import GoogleTagManager, { GROUPED_PRODUCTS_GUEST } from '../component/GoogleTagManager/GoogleTagManager.component';
+import { GROUPED_PRODUCTS_GUEST } from '../component/GoogleTagManager/GoogleTagManager.config';
+import GoogleTagManager from '../component/GoogleTagManager/GoogleTagManager.container';
 import ProductHelper from '../component/GoogleTagManager/utils/Product';
 import GtmQuery from '../query/Gtm.query';
 

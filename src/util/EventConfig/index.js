@@ -11,7 +11,14 @@
 
 import BrowserDatabase from 'Util/BrowserDatabase';
 
-import { EVENT_GTM_IMPRESSIONS } from '../Event/Events';
+import { EVENT_GTM_IMPRESSIONS } from '../Event';
+
+/**
+ * Map GTM event names to config event names
+ * @param name
+ * @returns {string}
+ */
+export const mapGtmEventNames = (name) => (name.includes('impressions') ? EVENT_GTM_IMPRESSIONS : name);
 
 /**
  * Check if push event is enabled in config
@@ -27,10 +34,3 @@ export const isEventEnabled = (eventName) => {
 
     return !!events[mapGtmEventNames(eventName)];
 };
-
-/**
- * Map GTM event names to config event names
- * @param name
- * @returns {string}
- */
-export const mapGtmEventNames = (name) => (name.includes('impressions') ? EVENT_GTM_IMPRESSIONS : name);

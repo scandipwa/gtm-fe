@@ -14,7 +14,6 @@ import Event, { EVENT_GTM_PRODUCT_ADD_TO_CART } from '../../../util/Event';
 import ProductHelper from '../utils';
 import BaseEvent from './BaseEvent.event';
 
-export const GROUPED_CART_PRODUCTS = 'GROUPED_CART_PRODUCTS';
 export const SPAM_PROTECTION_DELAY = 200;
 /**
  * Product add to cart event
