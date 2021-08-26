@@ -39,10 +39,11 @@ export const aroundSelectPaymentMethod = (args, callback) => {
 export const aroundComponentDidUpdate = (args, callback, instance) => {
     const [, prevState] = args;
 
-    const { selectedShippingMethodCode } = instance.state;
-    const { selectedShippingMethodCode: prevSelectedShippingMethodCode } = prevState;
+    const { selectedShippingMethodCode = false } = instance.state || {};
+    const { selectedShippingMethodCode: prevSelectedShippingMethodCode = false } = prevState || {};
 
-    if (selectedShippingMethodCode !== prevSelectedShippingMethodCode) {
+    if (selectedShippingMethodCode && prevSelectedShippingMethodCode
+        && selectedShippingMethodCode !== prevSelectedShippingMethodCode) {
         Event.dispatch(
             EVENT_GTM_CHECKOUT_OPTION,
             { step: 1, option: selectedShippingMethodCode }
